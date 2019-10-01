@@ -1,0 +1,12 @@
+.d-flex {
+    display: flex;
+}
+
+.active {
+    border: 2px solid red;
+    padding: 5px;
+}
+
+.focus {
+    box-shadow: 0 0 10px 1px #ccc;
+}
