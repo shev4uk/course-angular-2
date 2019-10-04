@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lessons';
+
+  search = '';
+
+  user = {
+    email: '',
+    password: '',
+    gender: ''
+  }
+
+  onSearch() {
+    console.log(this.search);
+    this.search = '';
+  }
+
+  onSubmit() {
+    console.log(this.user);
+  }
 }
