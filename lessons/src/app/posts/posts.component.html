@@ -1,0 +1,5 @@
+<h2>Post</h2>
+<div *ngFor="let item of posts">
+    <a [routerLink]="['/posts', item.id]">Post id {{ item.id }}</a>
+</div>
+<router-outlet></router-outlet>
