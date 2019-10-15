@@ -21,6 +21,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatDialogModule,
     MatButtonModule
   ],
+  entryComponents: [DialogOverviewExampleDialog],
   providers: [],
   bootstrap: [AppComponent]
 })
