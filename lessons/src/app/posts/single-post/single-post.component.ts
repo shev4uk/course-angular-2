@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/post.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-single-post',
@@ -14,7 +15,8 @@ export class SinglePostComponent implements OnInit {
   constructor(
     private _postService: PostService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -31,8 +33,16 @@ export class SinglePostComponent implements OnInit {
         this.post = data;
         // console.log(data);
       });
-    })
+    });
 
+  }
+
+  goToHome() {
+      this.router.navigate(['/home']);
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

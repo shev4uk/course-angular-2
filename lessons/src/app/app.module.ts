@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'posts', component: PostsComponent, children: [
     { path: ':id', component: SinglePostComponent },
   ] },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: 'product', loadChildren: () => import('./product/product.module').then( m => m.ProductModule) },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
