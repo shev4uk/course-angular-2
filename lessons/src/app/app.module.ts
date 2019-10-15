@@ -7,10 +7,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
 import { SinglePostComponent } from './posts/single-post/single-post.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'posts', component: PostsComponent, children: [
+  { path: 'posts', component: PostsComponent, canActivate: [AuthGuard], children: [
     { path: ':id', component: SinglePostComponent },
   ] },
   { path: 'product', loadChildren: () => import('./product/product.module').then( m => m.ProductModule) },
