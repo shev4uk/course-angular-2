@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,9 @@ import { throwError } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  // intercepter
+  // https://stackoverflow.com/questions/47400929/how-to-add-authorization-header-to-angular-http-request
 
   url = 'http://localhost:8000';
   errors;
@@ -20,7 +23,29 @@ export class AppComponent {
   }
 
   ngOnInit() {
-
+    const reqHeader = new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    });
+    this.http.get(`${this.url}/events`, { headers: reqHeader }).subscribe( res => {
+      console.log(res);
+    })
+    // filter
+    this.http.get(`${this.url}/events?categoryId=1&categoryId=2`, { headers: reqHeader }).subscribe( res => {
+      console.log(res);
+    })
+    // sort
+    this.http.get(`${this.url}/events?_sort=price&_order=asc`, { headers: reqHeader }).subscribe( res => {
+      console.log(res);
+    })
+    // range
+    this.http.get(`${this.url}/events?price_gte=300&price_lte=500`, { headers: reqHeader }).subscribe( res => {
+      console.log(res);
+    })
+    // search
+    this.http.get(`${this.url}/events?q=internet`, { headers: reqHeader }).subscribe( res => {
+      console.log(res);
+    })
   }
 
   handleErrors(res) {
@@ -43,6 +68,7 @@ export class AppComponent {
         )
       )
       .subscribe((data) => {
+        localStorage.setItem('token', data['access_token']);
         console.log(data);
       })
   }
@@ -60,6 +86,7 @@ export class AppComponent {
         )
       )
       .subscribe((data) => {
+        localStorage.setItem('token', data['access_token']);
         console.log(data);
       })
   }
