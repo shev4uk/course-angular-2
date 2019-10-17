@@ -3,7 +3,7 @@ var faker = require('faker');
 var database = {
   events: [],
   categories: [],
-  history: []
+  wishlist: []
 };
 
 var users = {
@@ -35,14 +35,7 @@ for (var i = 1; i <= 10; i++) {
   });
 }
 for (var i = 1; i <= 10; i++) {
-  database.history.push({
-    id: i,
-    eventId: faker.random.number({ min: 1, max: quantityEvent }),
-  });
-}
-
-for (var i = 1; i <= 10; i++) {
-  database.history.push({
+  database.wishlist.push({
     id: i,
     eventId: faker.random.number({ min: 1, max: quantityEvent }),
   });
