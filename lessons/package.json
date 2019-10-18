@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start-auth": "node server.js"
+    "json": "json-server --watch ./db.json",
+    "start-auth": "node server.js",
+    "data": "node generateData.js > db.json"
   },
   "private": true,
   "dependencies": {
