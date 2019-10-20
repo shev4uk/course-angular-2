@@ -1,4 +1,5 @@
 var faker = require('faker');
+var fs = require('fs');
 
 var database = {
   events: [],
@@ -41,14 +42,21 @@ for (var i = 1; i <= 10; i++) {
   });
 }
 
-// for (var i = 1; i <= 10; i++) {
-//   users.users.push({
-//     id: i,
-//     name: faker.name.findName(),
-//     email: faker.internet.email(),
-//     password: faker.internet.email()
-//   });
-// }
-// console.log(JSON.stringify(users));
+for (var i = 1; i <= 10; i++) {
+  users.users.push({
+    id: i,
+    name: faker.name.findName(),
+    email: faker.internet.email(),
+    password: faker.internet.email()
+  });
+}
 
-console.log(JSON.stringify(database));
+fs.writeFile('db.json', JSON.stringify(database), (err) => {
+  if (err) throw err;
+  console.log('It\'s saved!');
+});
+
+fs.writeFile('users.json', JSON.stringify(users), (err) => {
+  if (err) throw err;
+  console.log('It\'s saved!');
+});

@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "json": "json-server --watch ./db.json",
     "start-auth": "node server.js",
-    "data": "node generateData.js > db.json"
+    "data": "node generateData.js"
   },
   "private": true,
   "dependencies": {
