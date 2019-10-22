@@ -1,0 +1,13 @@
+.event-item {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    .col-l {    
+        width: 30%;
+    }
+    .col-r {
+        padding-left: 10px;
+        width: 70%;
+    }
+}
