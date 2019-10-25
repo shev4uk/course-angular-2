@@ -9,6 +9,7 @@ import { EventService } from '../event.service';
 export class EventListComponent implements OnInit {
 
   events;
+  selected = 'option2';
 
   constructor(
     private eventService: EventService
@@ -19,6 +20,21 @@ export class EventListComponent implements OnInit {
       console.log(data);
       this.events = data;
     });
+
+    this.eventService.eventFilter.subscribe( (data) => {
+      console.log(data);
+      this.events = data;
+    })
+  }
+
+  onSortPrice(sort) {
+    console.log(sort);
+    this.eventService.getEventFilter(
+      {
+        "_sort": 'price',
+        "_order": sort
+      }
+      );
   }
 
 }

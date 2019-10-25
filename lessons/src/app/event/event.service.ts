@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Event } from './models/event.model';
 import { Category } from './models/category.model';
 
@@ -9,6 +9,8 @@ import { Category } from './models/category.model';
   providedIn: 'root'
 })
 export class EventService {
+
+  eventFilter = new Subject();
 
   urlApi = environment.url;
 
@@ -26,5 +28,11 @@ export class EventService {
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${this.urlApi}categories`);
+  }
+
+  getEventFilter(request) {
+    this.http.get<Event>(`${this.urlApi}events`, {params: request}).subscribe( (data) => {
+      this.eventFilter.next(data);
+    });
   }
 }

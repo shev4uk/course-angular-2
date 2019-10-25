@@ -1,1 +1,10 @@
+Sort 
+<mat-form-field>
+<mat-label>Sort price</mat-label>
+<mat-select (selectionChange)="onSortPrice($event.value)">
+    <mat-option value="desc">Price low</mat-option>
+    <mat-option value="asc">Price higher</mat-option>
+</mat-select>
+</mat-form-field>
 <app-event-item *ngFor="let event of events" [event]="event"></app-event-item>
+<ng-container *ngIf="events?.length == 0">Not found</ng-container>

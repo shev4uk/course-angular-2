@@ -9,15 +9,20 @@ import { EventFilterComponent } from './event-filter/event-filter.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import {MatSliderModule} from '@angular/material/slider';
+import {MatSelectModule} from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [EventListComponent, EventItemComponent, EventDetailComponent, EventTemplateComponent, EventFilterComponent],
   imports: [
     CommonModule,
+    FormsModule,
     EventRoutingModule,
     MatInputModule,
     MatFormFieldModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSliderModule,
+    MatSelectModule
   ]
 })
 export class EventModule { }

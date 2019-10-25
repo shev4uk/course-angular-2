@@ -1,10 +1,14 @@
 <div class="form-group">
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="Search" type="search" value="">
+        <input matInput placeholder="Search" type="search" value="" (input)="onSearch($event)">
     </mat-form-field>
 </div>
 <div class="form-group">
     <div *ngFor="let category of categories">
-        <mat-checkbox>{{ category.name }}</mat-checkbox>
+        <mat-checkbox (change)="onCheckCategory($event, category.id)">{{ category.name }}</mat-checkbox>
     </div>
 </div>
+<div class="form-group">
+    <mat-slider [max]="max" [min]="min" [thumbLabel]="thumbLabel" (change)="onChangePrice($event)"></mat-slider>
+</div>
+
