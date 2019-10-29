@@ -29,6 +29,10 @@ export class AuthService {
     this.router.navigate(['/auth/login']);
   }
 
+  isLogin() {
+    return localStorage.getItem('token') === null;
+  }
+
   getToken() {
     return localStorage.getItem('token');
   }

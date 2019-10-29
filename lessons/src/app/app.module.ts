@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './auth/token.interceptor';
+import { ErrorInterceptor } from './auth/error.interceptor';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { TokenInterceptor } from './auth/token.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    } 
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, 
   ],
   bootstrap: [AppComponent]
 })
