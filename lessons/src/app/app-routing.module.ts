@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: 'event',
     loadChildren: () => import('./event/event.module').then( m => m.EventModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule)
   }
 ]
 

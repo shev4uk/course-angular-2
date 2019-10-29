@@ -45,9 +45,9 @@ for (var i = 1; i <= 10; i++) {
 for (var i = 1; i <= 10; i++) {
   users.users.push({
     id: i,
-    name: faker.name.findName(),
+    // name: faker.name.findName(),
     email: faker.internet.email(),
-    password: faker.internet.email()
+    password: faker.internet.password()
   });
 }
 

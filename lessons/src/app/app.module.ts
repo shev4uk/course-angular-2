@@ -8,6 +8,10 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './auth/token.interceptor';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +24,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    } 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
