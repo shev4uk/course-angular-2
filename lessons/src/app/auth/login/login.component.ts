@@ -10,10 +10,11 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
 
   formLogin;
+  errorServer;
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -24,11 +25,15 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formLogin.value);
-    this.authService.login(this.formLogin.value).subscribe( (res) =>{
-      localStorage.setItem('token', res.access_token)
-      console.log(res);
-    })
+    console.log(this.formLogin.valid);
+    this.authService.login(this.formLogin.value).subscribe( 
+      (res) =>{
+        console.log(res);
+      },
+      (er) => {
+        this.errorServer = er;
+      }
+    )
   }
 
 }

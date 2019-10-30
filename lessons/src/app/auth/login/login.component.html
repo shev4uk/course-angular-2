@@ -7,10 +7,15 @@
         </div>
         <div class="form-group">
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Password" formControlName="password">
+                <input matInput type="password" placeholder="Password" formControlName="password">
             </mat-form-field>
         </div>
-        <button mat-flat-button color="accent">Send</button>
+        <div class="form-group">
+            <button mat-flat-button color="accent" [disabled]="!formLogin.valid">Send</button>
+        </div>
     </form>
+    <div class="alert alert-danger" role="alert" *ngIf="errorServer">
+        {{ errorServer }}
+    </div>
 </div>
 
